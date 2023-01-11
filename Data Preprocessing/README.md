@@ -19,11 +19,20 @@ import os
 ```
 
 ## 2. Load Data Set
+### Loading xlsx files 
 ``` 
 os.chdir ("C:\\Users\\Nilesh\\Documents\\GitHub\\Machine-Learning\\Data Set\\")
 df1= pd.read_excel("Data Preprocessing Data File.xlsx")	
 print (df1)
 ```
+
+### Loading csv files 
+``` 
+os.chdir ("C:\\Users\\Nilesh\\Documents\\GitHub\\Machine-Learning\\Data Set\\")
+df1= pd.read_csv("Data Preprocessing Data File.csv")
+print (df1)
+```
+
 
 ## 3. Load independent variables and dependent variables to two separate arrays 
 ### Columns Independent variable – Country, Age , Salary (Create X)
