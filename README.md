@@ -1,45 +1,28 @@
-![Cover image](https://github.com/nileshparab42/Amadeus/blob/master/assets/Amadeus-Cover.png)
+![Cover image](https://github.com/nileshparab42/Machine-Learning/blob/master/assets/ML-Cover.png)
 
 # Machine Learning
 
-The Desktop Assistant is designed to help users with tasks, information, and communication.
+A Machine Learning course teaches the principles and techniques of using algorithms and statistical models to enable computers to learn from and make predictions from data.
 
 ## Description
 
 Welcome to the Machine Learning Tutorial Repository! This repository contains a variety of tutorials and examples on various machine learning topics, including supervised and unsupervised learning, deep learning, and more. Each tutorial is designed to be self-contained and easy to follow, with clear explanations and annotated code.
  
-## Features
+## Course Outline
 
-Here are some examples of what you can ask Desktop Assistant:
+The course is divided into the following sections:
 
-- "What time is it now?"
-- "Search something on Google"
-- "Search something on Youtube"
-- "Open Visual Studio Code"
-- "Open GitHub"
-- "Open Classroom"
-- "Open File explorer"
-- "Open Notepad"
-- "Open browser"
-- "Open Youtube"
+- Introduction to Machine Learning
+- Supervised Learning
+- Unsupervised Learning
+- Deep Learning
+- Advanced Topics
 
-![image of features](https://github.com/nileshparab42/Amadeus/blob/master/assets/AD-Features.png)
+Each section includes a set of slides, code examples, and exercises. The course also includes a final project where students can apply the concepts learned in the course to a real-world problem.
 
+## Prerequisites
 
-## Getting Started
-
-### Language
-
-* Python
-
-### Modules
-
-* pyaudio
-* speech_recognition
-* pyttsx3
-* datetime
-* os
-* webbrowser
+The course assumes a basic understanding of programming and statistics. Familiarity with Python is recommended, but not required as the course will provide a brief introduction to the python basics.
 
 ## Getting Started
 
@@ -65,10 +48,6 @@ Once you have the repository on your local machine, navigate to the directory an
 jupyter notebook
 ```
 This will open a new browser window with the Jupyter notebook interface. From there, you can open any of the tutorial notebooks and start working through the exercises.
-
-## Prerequisites
-
-The course assumes a basic understanding of programming and statistics. Familiarity with Python is recommended, but not required as the course will provide a brief introduction to the python basics.
 
 ## Contributions
 
