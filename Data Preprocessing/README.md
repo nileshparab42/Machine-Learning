@@ -1,4 +1,6 @@
-# Pre-Processing Steps 
+# Data Preprocessing
+
+## Pre-Processing Steps 
 
 1. Import relevant libraries 
 2. Import the Data Set to analyse and clean for prediction 
