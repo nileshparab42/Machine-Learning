@@ -10,8 +10,9 @@ Populate with mean –When there  is no outlier
 Populate with median – When there is outlier
 - Categorical data– Mode imputation – Maximum data category
 
+## 1 Reading the data
 
-## 1. Import Libraries
+### 1.1 Import Libraries
 ```
 import numpy as np
 import pandas as pd
@@ -20,19 +21,43 @@ import seaborn as sns
 import os
 ```
 
-## 2. Load Data Set
-### Loading xlsx files 
+### 1.2 Load Data Set
+#### Loading xlsx files 
 ``` 
-os.chdir ("C:\\Users\\Nilesh\\Documents\\GitHub\\Machine-Learning\\Data Set\\")
-df1= pd.read_excel("Data Preprocessing Data File.xlsx")	
-print (df1)
+os.chdir("C:\\Users\\Nilesh\\Documents\\GitHub\\Machine-Learning\\Data Set\\")
+df = pd.read_excel("Data Preprocessing Data File.xlsx")	
+print(df)
 ```
 
-### Loading csv files 
+#### Loading csv files 
 ``` 
-os.chdir ("C:\\Users\\Nilesh\\Documents\\GitHub\\Machine-Learning\\Data Set\\")
-df1= pd.read_csv("Data Preprocessing Data File.csv")
-print (df1)
+os.chdir("C:\\Users\\Nilesh\\Documents\\GitHub\\Machine-Learning\\Data Set\\")
+df1 = pd.read_csv("Data Preprocessing Data File.csv")
+print(df)
+```
+
+### 1.3 Identifying the dimensions
+
+#### Shape of the dataset
+```
+df.shape
+```
+
+#### Columns in the dataset
+```
+df.columns
+```
+
+#### Top values of the dataset
+```
+df.head()
+```
+
+## 2 Variable identification
+
+### Identifying the datatypes of the variables
+```
+df.dtypes
 ```
 
 
