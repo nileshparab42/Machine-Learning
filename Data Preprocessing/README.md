@@ -18,18 +18,19 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+from scipy.stats import ttest_ind, chi2_contingency
 import os
 ```
 
 ### 1.2 Load Data Set
-#### Loading xlsx files 
+#### 1.2.1 Loading xlsx files 
 ``` 
 os.chdir("C:\\Users\\Nilesh\\Documents\\GitHub\\Machine-Learning\\Data Set\\")
 df = pd.read_excel("Data Preprocessing Data File.xlsx")	
 print(df)
 ```
 
-#### Loading csv files 
+#### 1.2.2 Loading csv files 
 ``` 
 os.chdir("C:\\Users\\Nilesh\\Documents\\GitHub\\Machine-Learning\\Data Set\\")
 df1 = pd.read_csv("Data Preprocessing Data File.csv")
@@ -38,28 +39,117 @@ print(df)
 
 ### 1.3 Identifying the dimensions
 
-#### Shape of the dataset
+#### 1.3.1 Shape of the dataset
 ```
 df.shape
 ```
 
-#### Columns in the dataset
+#### 1.3.2 Columns in the dataset
 ```
 df.columns
 ```
 
-#### Top values of the dataset
+#### 1.3.3 Top values of the dataset
 ```
 df.head()
 ```
 
 ## 2 Variable identification
 
-### Identifying the datatypes of the variables
+#### 2.1 Identifying the datatypes of the variables
 ```
 df.dtypes
 ```
 
+## 3 Univarient Analysis
+
+### 3.1 Contineous Variable
+
+#### 3.1.1 Tabular Methods
+```
+df.describe()
+```
+
+#### 3.1.2 Graphical method
+##### 3.1.2.1 Plotting histogram
+```
+df['variable'].plot.hist
+```
+
+##### 3.1.2.2 Plotting boxplot
+```
+df['variable'].plot.box()
+```
+
+## 3.2 Categorical Variable
+
+### 3.2.1 Tabular Methods
+#### 3.2.1.1 Creating frequency table
+```
+df['variable'].value_counts() 
+```
+
+#### 3.2.1.2 Create percentages frequencies 
+```
+df['variable'].value_counts()/len(df['variable']) 
+```
+### 3.2.2 Graphical method
+#### 3.2.2.1 Plotting barplot 
+```
+df['variable'].value_counts().plot.bar() 
+```
+
+#### 3.2.2.2 Plotting barplot using percentage 
+```
+(df['variable'].value_counts()/len(df['variable'])).plot.bar() 
+```
+
+
+## 4 Bivarient Analysis
+
+### 4.1 Contineous - Contineous Variable
+
+#### 4.1.1 Plotting scatter plot 
+```
+df.plot.scatter('variable 1','variable 2')
+```
+
+#### 4.1.2 Using correlation matrix
+```
+df.corr()
+``` 
+
+### 4.2 Categorical - Contineous Variable
+#### 4.2.1 Using tabular method
+```
+df.groupby('Categorical variable')['contineous variable'].mean()
+```
+
+#### 4.2.2 Creating bar plot
+```
+df.groupby('Categorical-variable')['contineous-variable'].mean().plot.bar
+```
+
+#### 4.2.3 By using t-test  
+Create groups of categorical variables
+```
+group = df[df['categorical-variable']=='Value']
+```
+Calculating t-test for each categorical variable
+```
+ttest_ind[group1['contineous-variable'],,nan-policy='omit']
+```
+
+### 4.3 Categorical - Categorical Variable
+#### 4.3.1 Creating cross table 
+```
+pd.crosstab(df['variable 1'],df['variable 2'])
+```
+
+#### 4.3.2 Using chi-square test
+```
+chi2_contingency(pd.crosstab(df['variable 1'],df['variable 2']))
+```
 
 ## 3. Load independent variables and dependent variables to two separate arrays 
 ### Columns Independent variable – Country, Age , Salary (Create X)
