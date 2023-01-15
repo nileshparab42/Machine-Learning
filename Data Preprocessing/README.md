@@ -336,7 +336,7 @@ df = df[df['Variable']<inside>range]
 df.loc[df['Variable']<outside>range,'Variable'] = np.mean(df['Variables'])
 ```
 
-##  8 Export Preprocessed Dataset
+##  Export Preprocessed Dataset
 In Pandas, you can use the `to_csv()` function to export a DataFrame to a CSV file. The `to_csv()` function takes several optional parameters such as the file name, delimiter, index, header, etc.
 Here's an example of using the `to_csv()` function to export a DataFrame to a CSV file:
 ```
