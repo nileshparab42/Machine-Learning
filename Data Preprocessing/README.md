@@ -2,8 +2,6 @@
 
 # Data Preprocessing
 
-## Pre-Processing Steps 
-
 Data preprocessing is the process of cleaning, transforming, and organizing the raw data before feeding it into a machine learning model. It is an important step in the machine learning pipeline as it can greatly affect the performance of the model. Data preprocessing includes tasks such as handling missing values, removing outliers, converting categorical variables to numerical, normalizing the data, and splitting the data into training and testing sets. The goal of data preprocessing is to make the data suitable for the machine learning model by making it more informative and reducing the noise in the data. Additionally it also helps to avoid errors in data and overfitting.
 
 ## 1 Reading the data
@@ -23,6 +21,11 @@ import os
 ```
 
 ### Load Data Set
+
+Pandas is a powerful library in Python that is commonly used for data manipulation and analysis. One of the most basic tasks in Pandas is reading data into a DataFrame.
+
+To read data into a DataFrame, you can use the `pd.read_csv()` function, which reads a CSV file into a DataFrame. The first argument of the function is the file path, and additional parameters can be used to specify options such as the separator, header, and index column.
+
 #### Loading xlsx files 
 ``` 
 os.chdir("C:\\Users\\Nilesh\\Documents\\GitHub\\Machine-Learning\\Data Set\\")
@@ -36,6 +39,7 @@ os.chdir("C:\\Users\\Nilesh\\Documents\\GitHub\\Machine-Learning\\Data Set\\")
 df = pd.read_csv("Data Preprocessing Data File.csv")
 print(df)
 ```
+Once the data is read into a DataFrame, you can use various Pandas functions to manipulate and analyze the data.
 
 ### Identifying the dimensions
 
