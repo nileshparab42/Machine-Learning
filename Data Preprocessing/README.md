@@ -1,4 +1,4 @@
-![Cover image](https://github.com/nileshparab42/Machine-Learning/blob/master/assets/ML-Cover.png)
+![Cover image](https://github.com/nileshparab42/Machine-Learning/blob/master/assets/DP-Cover.png)
 
 # Data Preprocessing
 
@@ -7,7 +7,7 @@
 Data preprocessing is the process of cleaning, transforming, and organizing the raw data before feeding it into a machine learning model. It is an important step in the machine learning pipeline as it can greatly affect the performance of the model. Data preprocessing includes tasks such as handling missing values, removing outliers, converting categorical variables to numerical, normalizing the data, and splitting the data into training and testing sets. The goal of data preprocessing is to make the data suitable for the machine learning model by making it more informative and reducing the noise in the data. Additionally it also helps to avoid errors in data and overfitting.
 
 ## 1 Reading the data
-![Cover image](https://github.com/nileshparab42/Machine-Learning/blob/master/assets/ML-Cover.png)
+![Variable image](https://github.com/nileshparab42/Machine-Learning/blob/master/assets/Variable.png)
 
 ### Import Libraries
 ```
@@ -55,7 +55,7 @@ df.head()
 ```
 
 ## 2 Variable identification
-![Cover image](https://github.com/nileshparab42/Machine-Learning/blob/master/assets/ML-Cover.png)
+![Variable image](https://github.com/nileshparab42/Machine-Learning/blob/master/assets/Variable.png)
 
 #### Identifying the datatypes of the variables
 ```
@@ -74,7 +74,7 @@ for column in df.columns:
 ```
 
 ## 3 Plotting multiple graphs
-![Cover image](https://github.com/nileshparab42/Machine-Learning/blob/master/assets/ML-Cover.png)
+![Plotting graph image](https://github.com/nileshparab42/Machine-Learning/blob/master/assets/Plotting-Graph.png)
 ```
 plt.rcParams["figure.figsize"] = [13.50, 3.50]
 plt.rcParams["figure.autolayout"] = True
@@ -87,7 +87,7 @@ df['variable3'].plot.hist(title="Title3",color="MEDIUMVIOLETRED")
 
 
 ## 4 Univarient Analysis
-![Cover image](https://github.com/nileshparab42/Machine-Learning/blob/master/assets/ML-Cover.png)
+![Univarient image](https://github.com/nileshparab42/Machine-Learning/blob/master/assets/Univarient.png)
 
 ### Univarient Analysis for Contineous Variables
 
@@ -132,7 +132,7 @@ df['variable'].value_counts().plot.bar()
 
 
 ## 5 Bivarient Analysis
-![Cover image](https://github.com/nileshparab42/Machine-Learning/blob/master/assets/ML-Cover.png)
+![Bivarient image](https://github.com/nileshparab42/Machine-Learning/blob/master/assets/Multivalue.png)
 
 ### Contineous - Contineous Variable
 
@@ -193,7 +193,7 @@ chi2_contingency(pd.crosstab(df['variable 1'],df['variable 2']))
 ```
 
 ## 6 Missing Value Treatment
-![Cover image](https://github.com/nileshparab42/Machine-Learning/blob/master/assets/ML-Cover.png)
+![Missing value image](https://github.com/nileshparab42/Machine-Learning/blob/master/assets/Missing-Value.png)
 
 ### Identifying Missing Values
 #### Using describe function
@@ -240,6 +240,7 @@ df['Variable'].fillna(df['variable'].mode)
 ```
 
 ## 7 Outliers Treatement
+![Outlier image](https://github.com/nileshparab42/Machine-Learning/blob/master/assets/Outlier.png)
 
 ### Univarient Outlier Detection
 #### Creating boxplot 
