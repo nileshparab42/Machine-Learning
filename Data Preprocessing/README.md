@@ -243,17 +243,28 @@ chi2_contingency(pd.crosstab(df['variable 1'],df['variable 2']))
 ## 6 Missing Value Treatment
 ![Missing value image](https://github.com/nileshparab42/Machine-Learning/blob/master/assets/Missing-Value.png)
 
+Missing values in a dataset can greatly affect the performance of a machine learning model. Therefore, it's important to handle missing values appropriately before building the model. 
+
 ### Identifying Missing Values
 #### Using describe function
+
+The `describe()` function in Pandas is used to generate descriptive statistics of the numerical columns in a DataFrame. It returns a new DataFrame with the statistics, which includes count, mean, standard deviation, minimum, 25th percentile, median (50th percentile), 75th percentile, and maximum.
 ```
 df.describe()
 ```
 #### Using isnull function
+
+The `isnull()` function in Pandas is used to check for missing values in a DataFrame or Series. It returns a new DataFrame or Series with the same shape as the original, but containing `True` for cells with missing values and `False` for cells with non-missing values.
+
+You can also use `sum()` function on the output of `isnull()` function which will return the total number of missing values in each column
 ```
 df.isnull().sum()
 ```
 
 ### Treatment of missing values
+
+The `dropna()` function in Pandas is used to remove missing values from a DataFrame or Series. It returns a new DataFrame or Series with the missing values removed.
+
 #### Dropping rows whenever there are missing values
 ```
 df.dropna().shape
@@ -270,6 +281,8 @@ df.dropna(axis=1).shape
 ```
 df.dropna(axis=1,how='all').shape
 ```
+The `fillna()` function in Pandas is used to replace missing values in a DataFrame or Series with a specific value or using a method such as forward fill or backward fill. It returns a new DataFrame or Series with the missing values replaced.
+
 #### Filling all the missing values with constant
 ```
 df.fillna(const)
@@ -286,6 +299,7 @@ df['Variable'].fillna(df['variable'].median)
 ```
 df['Variable'].fillna(df['variable'].mode)
 ```
+The best approach to treating missing values depends on the specific problem and dataset. It's important to evaluate the impact of different methods on the performance of the model and choose the method that results in the best performance.
 
 ## 7 Outliers Treatement
 ![Outlier image](https://github.com/nileshparab42/Machine-Learning/blob/master/assets/Outlier.png)
@@ -323,10 +337,18 @@ df.loc[df['Variable']<outside>range,'Variable'] = np.mean(df['Variables'])
 ```
 
 ##  8 Export Preprocessed Dataset
+In Pandas, you can use the `to_csv()` function to export a DataFrame to a CSV file. The `to_csv()` function takes several optional parameters such as the file name, delimiter, index, header, etc.
+Here's an example of using the `to_csv()` function to export a DataFrame to a CSV file:
 ```
 df.to_csv('Preprocessed.csv', encoding='utf-8', index=False)
 ```
+You can also use the `to_excel()` function to export a DataFrame to an Excel file.
+```
+df.to_excel('Preprocessed.xlsx', index=False)
+```
+This will export the DataFrame to an excel file named "data.xlsx" in the current working directory.
 
+Pandas also support exporting DataFrame to many other file formats like feather, parquet, sql, etc. You can use the appropriate function for the desired file format to export the data.
 
 
 
