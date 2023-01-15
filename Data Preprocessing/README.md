@@ -12,193 +12,232 @@ Populate with median – When there is outlier
 
 ## 1 Reading the data
 
-### 1.1 Import Libraries
+### Import Libraries
 ```
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+%matplotlib inline
 import seaborn as sns
 from scipy.stats import ttest_ind, chi2_contingency
+import statsmodels.api as sm
+from statsmodels.formula.api import ols
 import os
 ```
 
-### 1.2 Load Data Set
-#### 1.2.1 Loading xlsx files 
+### Load Data Set
+#### Loading xlsx files 
 ``` 
 os.chdir("C:\\Users\\Nilesh\\Documents\\GitHub\\Machine-Learning\\Data Set\\")
 df = pd.read_excel("Data Preprocessing Data File.xlsx")	
 print(df)
 ```
 
-#### 1.2.2 Loading csv files 
+#### Loading csv files 
 ``` 
 os.chdir("C:\\Users\\Nilesh\\Documents\\GitHub\\Machine-Learning\\Data Set\\")
 df = pd.read_csv("Data Preprocessing Data File.csv")
 print(df)
 ```
 
-### 1.3 Identifying the dimensions
+### Identifying the dimensions
 
-#### 1.3.1 Shape of the dataset
+#### Shape of the dataset
 ```
 df.shape
 ```
 
-#### 1.3.2 Columns in the dataset
+#### Columns in the dataset
 ```
 df.columns
 ```
 
-#### 1.3.3 Top values of the dataset
+#### Top values of the dataset
 ```
 df.head()
 ```
 
 ## 2 Variable identification
 
-#### 2.1 Identifying the datatypes of the variables
+#### Identifying the datatypes of the variables
 ```
 df.dtypes
 ```
 
-## 3 Univarient Analysis
+#### Segmenting variables according to datatypes
+```
+categorical = []
+contineous = []
+for column in df.columns:
+    if df[column].dtypes == "int64":
+        contineous.append(column)
+    if df[column].dtypes == "object":
+        categorical.append(column)
+```
 
-### 3.1 Contineous Variable
+## 3 Plotting multiple graphs
+```
+plt.rcParams["figure.figsize"] = [13.50, 3.50]
+plt.rcParams["figure.autolayout"] = True
+figure, axis = plt.subplots(1, 3)
+  
+df['variable1'].plot.hist(title="Title1",ax=axis[0],color="MEDIUMVIOLETRED")
+df['variable2'].plot.hist(title="Title2",ax=axis[1],color="INDIGO")
+df['variable3'].plot.hist(title="Title3",color="MEDIUMVIOLETRED")
+```
 
-#### 3.1.1 Tabular Methods
+
+## 4 Univarient Analysis
+
+### Univarient Analysis for Contineous Variables
+
+#### Tabular Methods
 ```
 df.describe()
 ```
 
-#### 3.1.2 Graphical method
-##### 3.1.2.1 Plotting histogram
+#### Graphical method
+##### Plotting histogram
 ```
 df['variable'].plot.hist()
-plt.show()
 ```
 
-##### 3.1.2.2 Plotting boxplot
+##### Plotting boxplot
 ```
 df['variable'].plot.box()
 ```
 
-## 3.2 Categorical Variable
+## Univarient Analysis for Categorical Variable
 
-### 3.2.1 Tabular Methods
-#### 3.2.1.1 Creating frequency table
+### Tabular Methods
+#### Creating frequency table
 ```
 df['variable'].value_counts() 
 ```
 
-#### 3.2.1.2 Create percentages frequencies 
+#### Create percentages frequencies 
 ```
 df['variable'].value_counts()/len(df['variable']) 
 ```
-### 3.2.2 Graphical method
-#### 3.2.2.1 Plotting barplot 
+### Graphical method
+#### Plotting barplot 
 ```
 df['variable'].value_counts().plot.bar() 
 ```
 
-#### 3.2.2.2 Plotting barplot using percentage 
+#### Plotting barplot using percentage 
 ```
 (df['variable'].value_counts()/len(df['variable'])).plot.bar() 
 ```
 
 
-## 4 Bivarient Analysis
+## 5 Bivarient Analysis
 
-### 4.1 Contineous - Contineous Variable
+### Contineous - Contineous Variable
 
-#### 4.1.1 Plotting scatter plot 
+#### Plotting scatter plot 
 ```
-df.plot.scatter('variable 1','variable 2')
+df.plot.scatter('variable_1','variable_2')
 ```
 
-#### 4.1.2 Using correlation matrix
+#### Using correlation matrix
 ```
 df.corr()
 ``` 
-
-### 4.2 Categorical - Contineous Variable
-#### 4.2.1 Using tabular method
+#### Plotting heatmap 
 ```
-df.groupby('Categorical variable')['contineous variable'].mean()
+dataplot = sns.heatmap(df.corr(), cmap=sns.cubehelix_palette(as_cmap=True), annot=True)
 ```
-
-#### 4.2.2 Creating bar plot
+### Categorical - Contineous Variable
+#### Using tabular method
 ```
-df.groupby('Categorical-variable')['contineous-variable'].mean().plot.bar
+df.groupby('Categorical_variable')['contineous_variable'].mean()
 ```
 
-#### 4.2.3 By using t-test  
+#### Creating bar plot
+```
+df.groupby('Categorical_variable')['contineous_variable'].mean().plot.bar
+```
+
+#### Creating box plot
+```
+df.boxplot('contineous_variable',by='categorical_variable')
+```
+
+#### By using t-test  
 Create groups of categorical variables
 ```
-group = df[df['categorical-variable']=='Value']
+group = df[df['categorical_variable']=='Value']
 ```
 Calculating t-test for each categorical variable
 ```
-ttest_ind[group1['contineous-variable'],,nan-policy='omit']
+ttest_ind[group1['contineous_variable'],,nan-policy='omit']
+```
+#### By using ANOVA
+```
+new = ols('contineous_variable ~ categorical_variable',data=df).fit()
+an = sm.stats.anova_lm(new,typ=2)
+an
 ```
 
-### 4.3 Categorical - Categorical Variable
-#### 4.3.1 Creating cross table 
+### Categorical - Categorical Variable
+#### Creating cross table 
 ```
 pd.crosstab(df['variable 1'],df['variable 2'])
 ```
 
-#### 4.3.2 Using chi-square test
+#### Using chi-square test
 ```
 chi2_contingency(pd.crosstab(df['variable 1'],df['variable 2']))
 ```
 
-## 5 Missing Value Treatment
+## 6 Missing Value Treatment
 
-### 5.1 Identifying Missing Values
-#### 5.1.1 Using describe function
+### Identifying Missing Values
+#### Using describe function
 ```
 df.describe()
 ```
-#### 5.1.2 Using isnull function
+#### Using isnull function
 ```
 df.isnull().isnull()
 ```
 
-### 5.2 Treatment of missing values
-#### 5.2.1 Dropping rows whenever there are missing values
+### Treatment of missing values
+#### Dropping rows whenever there are missing values
 ```
 df.dropna().shape
 ```
-#### 5.2.2 Dropping rows where all the entries are missing
+#### Dropping rows where all the entries are missing
 ```
 df.dropna(how='all').shape
 ```
-#### 5.2.3 Dropping columns whenever there are missing values
+#### Dropping columns whenever there are missing values
 ```
 df.dropna(axis=1).shape
 ```
-#### 5.2.4 Dropping columns where all the entries are missing
+#### Dropping columns where all the entries are missing
 ```
 df.dropna(axis=1,how='all').shape
 ```
-#### 5.2.5 Filling all the missing values with constant
+#### Filling all the missing values with constant
 ```
 df.fillna(const)
 ```
-#### 5.2.6 Filling all the missing values of contineous variable with mean
+#### Filling all the missing values with mean
 ```
 df['Variable'].fillna(df['variable'].mean)
 ```
-#### 5.2.7 Filling all the missing values of contineous variable with median
+#### Filling all the missing values median
 ```
 df['Variable'].fillna(df['variable'].median)
 ```
-#### 5.2.8 Filling all the missing values of categorical variable with mode
+#### Filling all the missing values with mode
 ```
 df['Variable'].fillna(df['variable'].mode)
 ```
 
-## Outliers Treatement
+## 7 Outliers Treatement
 
 ### Univarient Outlier Detection
 #### Creating boxplot 
@@ -218,6 +257,7 @@ upper_limit = Q3+1.5*IQR
 #### Creating scatter plot 
 ```
 df['Variable'].plot.box()
+df.plot.scatter('Variable_1','Variable_2')
 ```
 
 ### Removing Outliers
@@ -231,27 +271,10 @@ df = df[df['Variable']<inside>range]
 df.loc[df['Variable']<outside>range,'Variable'] = np.mean(df['Variables'])
 ```
 
-
-
-## 3. Load independent variables and dependent variables to two separate arrays 
-### Columns Independent variable – Country, Age , Salary (Create X)
+##  8 Export Preprocessed Dataset
 ```
-x = df1.iloc[:,:-1].values
-print (x)
+df.to_csv('Preprocessed.csv', encoding='utf-8', index=False)
 ```
-
-### Dependent variable  - Purchased (Create Y )
-```
-y = df1.iloc[:,-1].values
-print (y)
-```
-
-## Encoding
-1. Label  Encoding – Convert to number 
-2. One hot Encoding – Create multiple columns based on number of unique record count
-3. Feature Scaling 
-4. Standardization – When there  no outlier 
-5. Normalization/ Min Max Scaler :  When there is  outlier
 
 
 
