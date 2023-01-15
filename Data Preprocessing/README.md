@@ -4,7 +4,7 @@
 
 Data preprocessing is the process of cleaning, transforming, and organizing the raw data before feeding it into a machine learning model. It is an important step in the machine learning pipeline as it can greatly affect the performance of the model. Data preprocessing includes tasks such as handling missing values, removing outliers, converting categorical variables to numerical, normalizing the data, and splitting the data into training and testing sets. The goal of data preprocessing is to make the data suitable for the machine learning model by making it more informative and reducing the noise in the data. Additionally it also helps to avoid errors in data and overfitting.
 
-## 1 Reading the data
+## Reading the data
 ![Variable image](https://github.com/nileshparab42/Machine-Learning/blob/master/assets/Variable.png)
 
 ### Import Libraries
@@ -43,52 +43,96 @@ Once the data is read into a DataFrame, you can use various Pandas functions to 
 
 ### Identifying the dimensions
 
+In Pandas, the dimensions of a DataFrame or Series can be identified by using the `shape` attribute.
+
+The shape attribute returns a tuple of (number of rows, number of columns) for a DataFrame, and (number of rows) for a Series.
+
 #### Shape of the dataset
 ```
 df.shape
 ```
 
+You can also use `len()` function to get number of rows in the dataframe
+```
+print(len(df)) 
+```
+
 #### Columns in the dataset
+You can also use `df.columns` to get all the column names in the dataframe and `df.index` to get the index of the dataframe.
 ```
 df.columns
+df.index
 ```
 
 #### Top values of the dataset
+
+The `head()` function in Pandas is used to return the first n rows of a DataFrame or Series. The default number of rows returned is 5, but you can specify a different number by passing an integer as an argument.
 ```
 df.head()
 ```
+Knowing the dimensions of a DataFrame or Series is important for understanding the size and structure of the data, and for selecting the appropriate methods for manipulating and analyzing the data.
 
-## 2 Variable identification
+
+## Variable identification
 ![Variable image](https://github.com/nileshparab42/Machine-Learning/blob/master/assets/Variable.png)
 
+In machine learning, variable identification refers to the process of identifying and selecting the most relevant variables (also called features) from a dataset to be used in building a predictive model. The goal of variable identification is to select the variables that are most informative and have the strongest relationship with the target variable.
+
 #### Identifying the datatypes of the variables
+
+In Pandas, the `dtypes` attribute is used to check the data types of the columns in a DataFrame. The `dtypes` attribute returns a Series with the data types of each column in the DataFrame.
+
 ```
 df.dtypes
 ```
+It's important to check the data types of the columns in a DataFrame before performing any operations on them, as certain operations may only be applicable to certain data types. For example, you can't perform mathematical operations on string data.
+
+You can also use `pd.DataFrame.astype()` method to change the data type of a column or multiple columns.
+```
+df['Variable'] = df['Variable'].astype(float)
+```
 
 #### Segmenting variables according to datatypes
+
+*Continuous variables*, on the other hand, can take on any value within a certain range. These variables are numeric and can be divided into smaller units. For example, the variable "weight" can take on any numeric value, such as 150 pounds or 175 pounds. Continuous variables can be further divided into interval and ratio variables. Interval variables have an arbitrary zero point, such as temperature in Celsius, while ratio variables have a true zero point, such as weight in pounds. It's important to note that the distinction between categorical and continuous variables can be dependent on the problem and the context.
+
+*Categorical variables* are variables that can be divided into separate categories. These variables can take on a limited number of values, and the values represent different categories. For example, the variable "color" can take on the values "red", "green", "blue", etc. and each value represents a different category of color. Categorical variables can be further divided into ordinal and nominal variables. Ordinal variables have a natural order or ranking, such as small, medium, and large, while nominal variables don't have any order.
+
+
 ```
 categorical = []
-contineous = []
+continuous = []
 for column in df.columns:
     if df[column].dtypes == "int64":
-        contineous.append(column)
+        continuous.append(column)
     if df[column].dtypes == "object":
         categorical.append(column)
 ```
 
-## 3 Plotting multiple graphs
+It's important to note that variable identification is an iterative process and the variables selected may change as the model is developed, tested and refined.
+
+## Plotting multiple graphs
 ![Plotting graph image](https://github.com/nileshparab42/Machine-Learning/blob/master/assets/Plotting-Graph.png)
+
+Matplotlib is a powerful library in Python for creating various types of plots and visualizations. When working with multiple plots, it's important to use subplots to organize the plots in a grid.
+
+The `plt.subplots()` function can be used to create a figure and a set of subplots. The function takes two arguments: the number of rows and the number of columns of the subplot grid.
 ```
 plt.rcParams["figure.figsize"] = [13.50, 3.50]
 plt.rcParams["figure.autolayout"] = True
 figure, axis = plt.subplots(1, 3)
-  
+```
+This will create a 2x2 grid of subplots.
+
+Once you have created the subplots, you can plot on each subplot using the `ax` object, which is an array of axes objects. You can access each subplot by indexing the `ax` object.
+```
 df['variable1'].plot.hist(title="Title1",ax=axis[0],color="MEDIUMVIOLETRED")
 df['variable2'].plot.hist(title="Title2",ax=axis[1],color="INDIGO")
 df['variable3'].plot.hist(title="Title3",color="MEDIUMVIOLETRED")
 ```
+Finally, you can display the plots using `plt.show()`
 
+You can also customize the appearance and layout of the subplots using various functions and properties such as title, x and y labels, legend, etc.
 
 ## 4 Univarient Analysis
 ![Univarient image](https://github.com/nileshparab42/Machine-Learning/blob/master/assets/Univarient.png)
@@ -153,20 +197,20 @@ df.corr()
 ```
 dataplot = sns.heatmap(df.corr(), cmap=sns.cubehelix_palette(as_cmap=True), annot=True)
 ```
-### Categorical - Contineous Variable
+### Categorical - continuous Variable
 #### Using tabular method
 ```
-df.groupby('Categorical_variable')['contineous_variable'].mean()
+df.groupby('Categorical_variable')['continuous_variable'].mean()
 ```
 
 #### Creating bar plot
 ```
-df.groupby('Categorical_variable')['contineous_variable'].mean().plot.bar
+df.groupby('Categorical_variable')['continuous_variable'].mean().plot.bar
 ```
 
 #### Creating box plot
 ```
-df.boxplot('contineous_variable',by='categorical_variable')
+df.boxplot('continuous_variable',by='categorical_variable')
 ```
 
 #### By using t-test  
@@ -176,11 +220,11 @@ group = df[df['categorical_variable']=='Value']
 ```
 Calculating t-test for each categorical variable
 ```
-ttest_ind[group1['contineous_variable'],,nan-policy='omit']
+ttest_ind[group1['continuous_variable'],,nan-policy='omit']
 ```
 #### By using ANOVA
 ```
-new = ols('contineous_variable ~ categorical_variable',data=df).fit()
+new = ols('continuous_variable ~ categorical_variable',data=df).fit()
 an = sm.stats.anova_lm(new,typ=2)
 an
 ```
