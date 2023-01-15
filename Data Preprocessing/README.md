@@ -193,10 +193,44 @@ df['Variable'].fillna(df['variable'].mean)
 ```
 df['Variable'].fillna(df['variable'].median)
 ```
-#### 5.2.8 Filling all the missing values of contineous variable with mode
+#### 5.2.8 Filling all the missing values of categorical variable with mode
 ```
 df['Variable'].fillna(df['variable'].mode)
 ```
+
+## Outliers Treatement
+
+### Univarient Outlier Detection
+#### Creating boxplot 
+```
+df['Variable'].plot.box()
+```
+#### Using IQR Method
+```
+Q1 = df.Variable.quantile(0.25)
+Q2 = df.Variable.quantile(0.75)
+IQR = Q3-Q1
+lower_limit = Q1-1.5*IQR
+upper_limit = Q3+1.5*IQR
+```
+
+### Bivarient Outlier Detection
+#### Creating scatter plot 
+```
+df['Variable'].plot.box()
+```
+
+### Removing Outliers
+
+#### Removing values below or above range
+```
+df = df[df['Variable']<inside>range]
+```
+#### Replacing outliers with mean values
+```
+df.loc[df['Variable']<outside>range,'Variable'] = np.mean(df['Variables'])
+```
+
 
 
 ## 3. Load independent variables and dependent variables to two separate arrays 
