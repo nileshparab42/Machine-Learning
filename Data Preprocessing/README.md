@@ -33,7 +33,7 @@ print(df)
 #### 1.2.2 Loading csv files 
 ``` 
 os.chdir("C:\\Users\\Nilesh\\Documents\\GitHub\\Machine-Learning\\Data Set\\")
-df1 = pd.read_csv("Data Preprocessing Data File.csv")
+df = pd.read_csv("Data Preprocessing Data File.csv")
 print(df)
 ```
 
@@ -73,7 +73,8 @@ df.describe()
 #### 3.1.2 Graphical method
 ##### 3.1.2.1 Plotting histogram
 ```
-df['variable'].plot.hist
+df['variable'].plot.hist()
+plt.show()
 ```
 
 ##### 3.1.2.2 Plotting boxplot
@@ -150,6 +151,53 @@ pd.crosstab(df['variable 1'],df['variable 2'])
 ```
 chi2_contingency(pd.crosstab(df['variable 1'],df['variable 2']))
 ```
+
+## 5 Missing Value Treatment
+
+### 5.1 Identifying Missing Values
+#### 5.1.1 Using describe function
+```
+df.describe()
+```
+#### 5.1.2 Using isnull function
+```
+df.isnull().isnull()
+```
+
+### 5.2 Treatment of missing values
+#### 5.2.1 Dropping rows whenever there are missing values
+```
+df.dropna().shape
+```
+#### 5.2.2 Dropping rows where all the entries are missing
+```
+df.dropna(how='all').shape
+```
+#### 5.2.3 Dropping columns whenever there are missing values
+```
+df.dropna(axis=1).shape
+```
+#### 5.2.4 Dropping columns where all the entries are missing
+```
+df.dropna(axis=1,how='all').shape
+```
+#### 5.2.5 Filling all the missing values with constant
+```
+df.fillna(const)
+```
+#### 5.2.6 Filling all the missing values of contineous variable with mean
+```
+df['Variable'].fillna(df['variable'].mean)
+```
+#### 5.2.7 Filling all the missing values of contineous variable with median
+```
+df['Variable'].fillna(df['variable'].median)
+```
+#### 5.2.8 Filling all the missing values of contineous variable with mode
+```
+df['Variable'].fillna(df['variable'].mode)
+```
+
 
 ## 3. Load independent variables and dependent variables to two separate arrays 
 ### Columns Independent variable – Country, Age , Salary (Create X)
