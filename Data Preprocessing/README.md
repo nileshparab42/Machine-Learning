@@ -94,10 +94,9 @@ df['Variable'] = df['Variable'].astype(float)
 
 #### Segmenting variables according to datatypes
 
-*Continuous variables*, on the other hand, can take on any value within a certain range. These variables are numeric and can be divided into smaller units. For example, the variable "weight" can take on any numeric value, such as 150 pounds or 175 pounds. Continuous variables can be further divided into interval and ratio variables. Interval variables have an arbitrary zero point, such as temperature in Celsius, while ratio variables have a true zero point, such as weight in pounds. It's important to note that the distinction between categorical and continuous variables can be dependent on the problem and the context.
+**Continuous variables**, on the other hand, can take on any value within a certain range. These variables are numeric and can be divided into smaller units. For example, the variable "weight" can take on any numeric value, such as 150 pounds or 175 pounds. Continuous variables can be further divided into interval and ratio variables. Interval variables have an arbitrary zero point, such as temperature in Celsius, while ratio variables have a true zero point, such as weight in pounds. It's important to note that the distinction between categorical and continuous variables can be dependent on the problem and the context.
 
-*Categorical variables* are variables that can be divided into separate categories. These variables can take on a limited number of values, and the values represent different categories. For example, the variable "color" can take on the values "red", "green", "blue", etc. and each value represents a different category of color. Categorical variables can be further divided into ordinal and nominal variables. Ordinal variables have a natural order or ranking, such as small, medium, and large, while nominal variables don't have any order.
-
+**Categorical variables** are variables that can be divided into separate categories. These variables can take on a limited number of values, and the values represent different categories. For example, the variable "color" can take on the values "red", "green", "blue", etc. and each value represents a different category of color. Categorical variables can be further divided into ordinal and nominal variables. Ordinal variables have a natural order or ranking, such as small, medium, and large, while nominal variables don't have any order.
 
 ```
 categorical = []
@@ -240,7 +239,7 @@ pd.crosstab(df['variable 1'],df['variable 2'])
 chi2_contingency(pd.crosstab(df['variable 1'],df['variable 2']))
 ```
 
-## 6 Missing Value Treatment
+## Missing Value Treatment
 ![Missing value image](https://github.com/nileshparab42/Machine-Learning/blob/master/assets/Missing-Value.png)
 
 Missing values in a dataset can greatly affect the performance of a machine learning model. Therefore, it's important to handle missing values appropriately before building the model. 
@@ -281,9 +280,11 @@ df.dropna(axis=1).shape
 ```
 df.dropna(axis=1,how='all').shape
 ```
-The `fillna()` function in Pandas is used to replace missing values in a DataFrame or Series with a specific value or using a method such as forward fill or backward fill. It returns a new DataFrame or Series with the missing values replaced.
 
 #### Filling all the missing values with constant
+
+The `fillna()` function in Pandas is used to replace missing values in a DataFrame or Series with a specific value or using a method such as forward fill or backward fill. It returns a new DataFrame or Series with the missing values replaced.
+
 ```
 df.fillna(const)
 ```
@@ -346,7 +347,7 @@ You can also use the `to_excel()` function to export a DataFrame to an Excel fil
 ```
 df.to_excel('Preprocessed.xlsx', index=False)
 ```
-This will export the DataFrame to an excel file named "data.xlsx" in the current working directory.
+This will export the DataFrame to an excel file named "Preprocessed.xlsx" in the current working directory.
 
 Pandas also support exporting DataFrame to many other file formats like feather, parquet, sql, etc. You can use the appropriate function for the desired file format to export the data.
 
