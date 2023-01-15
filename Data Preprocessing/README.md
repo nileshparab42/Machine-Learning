@@ -107,25 +107,25 @@ df['variable'].plot.hist()
 df['variable'].plot.box()
 ```
 
-## Univarient Analysis for Categorical Variable
+### Univarient Analysis for Categorical Variable
 
-### Tabular Methods
-#### Creating frequency table
+#### Tabular Methods
+##### Creating frequency table
 ```
 df['variable'].value_counts() 
 ```
 
-#### Create percentages frequencies 
+##### Create percentages frequencies 
 ```
 df['variable'].value_counts()/len(df['variable']) 
 ```
-### Graphical method
-#### Plotting barplot 
+#### Graphical method
+##### Plotting barplot 
 ```
 df['variable'].value_counts().plot.bar() 
 ```
 
-#### Plotting barplot using percentage 
+##### Plotting barplot using percentage 
 ```
 (df['variable'].value_counts()/len(df['variable'])).plot.bar() 
 ```
@@ -200,7 +200,7 @@ df.describe()
 ```
 #### Using isnull function
 ```
-df.isnull().isnull()
+df.isnull().sum()
 ```
 
 ### Treatment of missing values
