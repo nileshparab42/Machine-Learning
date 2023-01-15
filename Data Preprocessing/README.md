@@ -5,7 +5,7 @@
 Data preprocessing is the process of cleaning, transforming, and organizing the raw data before feeding it into a machine learning model. It is an important step in the machine learning pipeline as it can greatly affect the performance of the model. Data preprocessing includes tasks such as handling missing values, removing outliers, converting categorical variables to numerical, normalizing the data, and splitting the data into training and testing sets. The goal of data preprocessing is to make the data suitable for the machine learning model by making it more informative and reducing the noise in the data. Additionally it also helps to avoid errors in data and overfitting.
 
 ## Reading the data
-![Variable image](https://github.com/nileshparab42/Machine-Learning/blob/master/assets/Variable.png)
+<!-- ![Variable image](https://github.com/nileshparab42/Machine-Learning/blob/master/assets/Variable.png) -->
 
 ### Import Libraries
 ```
