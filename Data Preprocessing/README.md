@@ -14,9 +14,13 @@ import pandas as pd
 import matplotlib.pyplot as plt
 %matplotlib inline
 import seaborn as sns
+import pylab
+import scipy.stats as stat
 from scipy.stats import ttest_ind, chi2_contingency
 import statsmodels.api as sm
 from statsmodels.formula.api import ols
+from category_encoders import TargetEncoder
+from sklearn.preprocessing import LabelEncoder, StandardScaler, MinMaxScaler, RobustScaler
 import os
 ```
 
@@ -127,7 +131,6 @@ Once you have created the subplots, you can plot on each subplot using the `ax` 
 ```
 df['variable1'].plot.hist(title="Title1",ax=axis[0],color="MEDIUMVIOLETRED")
 df['variable2'].plot.hist(title="Title2",ax=axis[1],color="INDIGO")
-df['variable3'].plot.hist(title="Title3",color="MEDIUMVIOLETRED")
 ```
 Finally, you can display the plots using `plt.show()`
 
