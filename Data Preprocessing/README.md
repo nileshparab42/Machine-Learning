@@ -21,6 +21,7 @@ import statsmodels.api as sm
 from statsmodels.formula.api import ols
 from category_encoders import TargetEncoder
 from sklearn.preprocessing import LabelEncoder, StandardScaler, MinMaxScaler, RobustScaler
+from sklearn.model_selection import train_test_split
 import os
 ```
 

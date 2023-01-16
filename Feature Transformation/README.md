@@ -135,7 +135,22 @@ BoxCOx Transformation
 ```
 df['Variable_Boxcox'],parameters = stats.boxcox(df['Variable'])
 ```
+## Separating dependent and independent variables
 
+Creating Independent Variable
+```
+X = df1.iloc[:,:-1].values
+```
+
+Create Dependent Variable
+```
+Y = df1.iloc[:,-1].values
+```
+
+## Test-train split
+```
+X_train, X_test, Y_train, Y_test = train_test_split(X, Y, train_size=0.8, shuffle=True)
+```
 
 
 
