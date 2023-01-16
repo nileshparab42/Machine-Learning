@@ -137,28 +137,40 @@ Finally, you can display the plots using `plt.show()`
 
 You can also customize the appearance and layout of the subplots using various functions and properties such as title, x and y labels, legend, etc.
 
-## 4 Univarient Analysis
+## Univariant Analysis
 ![Univarient image](https://github.com/nileshparab42/Machine-Learning/blob/master/assets/Univarient.png)
+
+Univariate analysis is a statistical method used to analyze and summarize a single variable in a dataset. It is often used as a preliminary step in data exploration to understand the distribution and basic characteristics of the variable, such as its mean, median, mode, and range. Some common techniques used in univariate analysis include histograms, box plots, and density plots. This can also be used for feature selection in a machine learning model, where univariate analysis can be used to identify the most important or informative features for predicting a target variable.
 
 ### Univarient Analysis for Contineous Variables
 
 #### Tabular Methods
+
+The `describe` function in Pandas is a method used to generate summary statistics of a DataFrame or Series, such as mean, standard deviation, minimum and maximum values, and quartiles. It returns a DataFrame of statistics for each column of the input dataset.
 ```
 df.describe()
 ```
 
 #### Graphical method
+
 ##### Plotting histogram
+
+A histogram is a graphical representation of the distribution of a dataset. It is often used in univariate analysis to visualize the distribution of a single variable (feature) in a dataset. The x-axis of a histogram represents the range of values of the variable, and the y-axis represents the frequency of those values in the dataset.
 ```
 df['variable'].plot.hist()
 ```
 
 ##### Plotting boxplot
+A box plot, also known as a box-and-whisker plot, is a graphical representation of the distribution of a dataset. It is often used in univariate analysis to visualize the distribution of a single variable (feature) in a dataset. Box plots provide a way to visualize the quartiles and outliers of a dataset, which can be useful for identifying outliers and skewness in the data.
 ```
 df['variable'].plot.box()
 ```
 
 ### Univarient Analysis for Categorical Variable
+
+The `value_counts()` is a function in the Pandas library that returns the frequency of unique values in a Series or a DataFrame column. It returns a Series object containing the unique values of the input column as the index and the frequency of each value as the values.
+
+It is a powerful function to use for data exploration and feature engineering, it can be used to identify the most common values, the least common values and the distribution of the categorical variables.
 
 #### Tabular Methods
 ##### Creating frequency table
@@ -311,6 +323,9 @@ The best approach to treating missing values depends on the specific problem and
 
 ### Univarient Outlier Detection
 #### Creating boxplot 
+
+A box plot consists of a box which represents the interquartile range (IQR) of the dataset, with a line inside the box representing the median of the data. The box is defined by the first and third quartiles of the dataset, which are the values that divide the dataset into four equal parts. The "whiskers" extend from the box to the minimum and maximum values of the dataset, excluding any outliers. Outliers are defined as data points that fall outside of 1.5 times the IQR and are represented as individual points on the plot.
+
 ```
 df['Variable'].plot.box()
 ```
