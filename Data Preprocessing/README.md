@@ -107,7 +107,7 @@ df['Variable'] = df['Variable'].astype(float)
 categorical = []
 continuous = []
 for column in df.columns:
-    if df[column].dtypes == "int64":
+    if df[column].dtypes == "int64" or df[column].dtypes == "float64":
         continuous.append(column)
     if df[column].dtypes == "object":
         categorical.append(column)

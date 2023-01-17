@@ -15,7 +15,7 @@ len(df['Variable'].unique())
 
 #### Label Encoding
 ```
-le = Label_Encoder()
+le = LabelEncoder()
 df['Variable'] = le.fit_transform(df['Variable'])
 
 ```
