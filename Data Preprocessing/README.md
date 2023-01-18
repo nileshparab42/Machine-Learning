@@ -35,14 +35,14 @@ To read data into a DataFrame, you can use the `pd.read_csv()` function, which r
 ``` 
 os.chdir("C:\\Users\\Nilesh\\Documents\\GitHub\\Machine-Learning\\Data Set\\")
 df = pd.read_excel("Data Preprocessing Data File.xlsx")	
-print(df)
+df
 ```
 
 #### Loading csv files 
 ``` 
 os.chdir("C:\\Users\\Nilesh\\Documents\\GitHub\\Machine-Learning\\Data Set\\")
 df = pd.read_csv("Data Preprocessing Data File.csv")
-print(df)
+df
 ```
 Once the data is read into a DataFrame, you can use various Pandas functions to manipulate and analyze the data.
 
@@ -332,7 +332,7 @@ df['Variable'].plot.box()
 #### Using IQR Method
 ```
 Q1 = df.Variable.quantile(0.25)
-Q2 = df.Variable.quantile(0.75)
+Q3 = df.Variable.quantile(0.75)
 IQR = Q3-Q1
 lower_limit = Q1-1.5*IQR
 upper_limit = Q3+1.5*IQR
