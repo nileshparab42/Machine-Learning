@@ -81,7 +81,7 @@ values = te.transform(df['Variable'])
 df = pd.concat([df,values],axis=1)
 ```
 
-## Feature transformation for Continuous variable
+## Feature transformation 
 
 ### Standardization 
 ```
