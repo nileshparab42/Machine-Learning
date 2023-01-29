@@ -199,15 +199,14 @@ df['variable'].value_counts().plot.bar()
 
 ### Contineous - Contineous Variable
 
-#### Plotting scatter plot 
-```
-df.plot.scatter('variable_1','variable_2')
-```
-
 #### Using correlation matrix
 ```
 df.corr()
 ``` 
+#### Plotting scatter plot 
+```
+df.plot.scatter('variable_1','variable_2')
+```
 #### Plotting heatmap 
 ```
 dataplot = sns.heatmap(df.corr(), cmap=sns.cubehelix_palette(as_cmap=True), annot=True)
